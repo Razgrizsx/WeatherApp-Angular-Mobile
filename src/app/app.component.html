@@ -1,15 +1,61 @@
+<div class="search">
+  <form #form="ngForm" (submit)="onSubmit()">
+  <input type="text" placeholder="Search..." name="city" [(ngModel)]="cityName">
+  </form>
+</div>
+
 <div class="container">
   <div class="upper-data">
-    <img *ngIf="14 > 15" src="../assets/hot.jpg"  alt="">
-    <img *ngIf="14  <= 15" src="../assets/peakpx.jpg" alt="">
+    <img *ngIf="data.main.temp > 15" src="../assets/hot.jpg"  alt="">
+    <img *ngIf="data.main.temp  <= 15" src="../assets/peakpx.jpg" alt="">
 
     <div class="weather-data">
-      <div class="location">Wellington</div>
-      <div class="temperature">{{14.40 | number: '1.0-0'}}</div>
+      <div class="location">{{data.name}}</div>
+      <div class="temperature">{{data.main.temp | number: '1.0-0'}}°C</div>
     </div>
   </div>
   <div class="lower-data">
-
+    <div class="more-info-label">
+      More Information
+    </div>
+    <div class="more-info-container">
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/PngItem_666422.png" alt="">
+          <span>min</span>
+        </div>
+        <div class="info-block-value">
+          {{data.main.temp_min}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/PngItem_791918.png" alt="">
+          <span>max</span>
+        </div>
+        <div class="info-block-value">
+          {{data.main.temp_max}}°C
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/humidity.png" alt="">
+          <span>humidity</span>
+        </div>
+        <div class="info-block-value">
+          {{data.main.humidity}}
+        </div>
+      </div>
+      <div class="info-block">
+        <div class="info-block-label">
+          <img src="../assets/wind.png" alt="">
+          <span>wind</span>
+        </div>
+        <div class="info-block-value">
+          {{data.wind.speed}}km/h
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
